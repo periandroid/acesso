@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h2 class="mt-4">Editar os dados:{{c.id}}</h2>
+        <form action="" method="POST">            
+            {% csrf_token %}              
+            <div class="row">
+              <div class="col-sm-6">
+                <div>
+                  <label class="form" for="nome">Nome</label> <br>
+                  <input id="nome" class="form-control" name="nome" type="text" placeholder="Informe seu nome" required>
+                  <div class="valid-feedback">Valido</div>
+                  <div class="invalid-feedback">Preencha o campo</div> <br>
+                </div>
+                <div>
+                  <label for="cpf">CPF</label> <br>
+                  <input name="cpf" type="cpf" id="cpf" class="form-control" placeholder="Informe seu CPF" onkeypress="$(this).mask('000.000.000-00')" required/>
+                  <div class="valid-feedback">Valido</div>
+                  <div class="invalid-feedback">Preencha o campo</div> <br>
+                </div>
+                <div>
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
+                  <div class="valid-feedback">Valido</div>
+                  <div class="invalid-feedback">Preencha o campo</div> <br>
+                </div>
+            <input type="submit" class="btn btn-primary btn-xl text-uppercase" value="Salvar"/>
+        </form>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+{% endblock conteudo %}

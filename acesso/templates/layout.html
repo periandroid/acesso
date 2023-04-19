@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Acesso - Lagoa de Velhos</title>
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="{% static 'img/logo (2).png'%}">
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+            * {
+              box-sizing: border-box;
+            }
+            
+            #myInput {
+              background-image: url('/css/searchicon.png');
+              background-position: 10px 10px;
+              background-repeat: no-repeat;
+              width: 100%;
+              font-size: 16px;
+              padding: 12px 20px 12px 40px;
+              border: 1px solid #ddd;
+              margin-bottom: 12px;
+            }
+            
+            #myTable {
+              border-collapse: collapse;
+              width: 100%;
+              border: 1px solid #ddd;
+              font-size: 18px;
+            }
+            
+            #myTable th, #myTable td {
+              text-align: left;
+              padding: 12px;
+            }
+            
+            #myTable tr {
+              border-bottom: 1px solid #ddd;
+            }
+            
+            #myTable tr.header, #myTable tr:hover {
+              background-color: #f1f1f1;
+            }
+            </style>
+    </head>
+    <body class="sb-nav-fixed">
+        <!-- Menu-->
+        <nav class=" container navbar navbar-expand-lg navbar-light bg-white">
+            <img class="m-2" src="{% static 'img/logo3.png'%}" width="250">
+            <div class="col-sm-5 p-5"></div>
+                <div class="container px-4 px-lg-5">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                          {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'paginaInicial' %}">Página inicial</a></li>
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'solicita_transporte' %}">Transporte escolar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Sair</a></li>
+                          {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index'%}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}">Cadastrar</a></li>
+                          {% endif %} 
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </nav>
+        <div class="bg-light"></div>
+        <div class="p-1 bg-red"> </div>
+        <div class="p-1 bg-blue"></div>
+        {% block conteudo %}
+        {% endblock conteudo %}
+                <!-- Footer-->
+            
+                <div id="rodape" class="mt-5 p-3 text-center container-fluid">            
+                    <p><img class="m-2" src="{% static 'img/logo (2).png'%}" width="50">	© Acesso - Lagoa de Velhos</p>  
+                    </div>
+                    <div class="p-1 red"></div>
+                <!-- Bootstrap core JS-->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Core theme JS-->
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#cpf").mask("999.999.999-99");
+                    });
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+            </body>
+        </html>
+        

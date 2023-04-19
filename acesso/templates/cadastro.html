@@ -1,0 +1,155 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="container mt-5">
+        <h2 class="mb-2">Cadastro</h2>
+        <form action="" method="POST">
+        {% csrf_token %}              
+        <div class="row">
+          <div class="col-sm-6">
+            <div>
+              <label class="form" for="nome">Nome</label> <br>
+              <input id="nome" class="form-control" name="nome" type="text" placeholder="Informe seu nome" required>
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div>
+              <label for="cpf">CPF</label> <br>
+              <input name="cpf" type="cpf" id="cpf" class="form-control" placeholder="Informe seu CPF" onkeypress="$(this).mask('000.000.000-00')" required/>
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div>
+              <label for="email"><b>Email</b></label>
+              <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+
+            <div id="mostrar">
+              <button class="btn btn-primary">Informar endereço</button><br>
+              (Opcional)
+            </div>
+
+            <div class="endereco">
+              <label for="numero_casa">Número da casa</label> <br>
+              <input id="numero_casa" class="form-control" type="text" placeholder="Informe o número da sua residência" name="numero_casa">
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div class="endereco">
+              <label for="rua">Rua</label> <br>
+              <input id="rua" class="form-control" type="text" placeholder="Informe a rua da sua residência" name="rua">
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div class="endereco">
+              <label for="bairro">Bairro</label> <br>
+              <input id="bairro" class="form-control" type="text" placeholder="Informe o bairro da sua residência" name="bairro">
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div class="endereco">
+              <label for="complemento">Complemento</label> <br>
+              <input id="complemento" class="form-control" type="text" placeholder="Informe um completo da sua residência caso tenha" name="complemento">
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div> 
+</div>
+<div class="col-sm-6">
+            <div>
+              <label for="senha">Senha:</label><br>
+              <input type="password" class="form-control" id="password" placeholder="Informe sua senha" name="password" required>
+              <input type="button" id="showPassword" value="Mostrar senha" class="button" /></p>
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+            <div>
+              <label for="senha2">Confirmar senha:</label><br>
+              <input type="password" class="form-control" id="password2" placeholder="Confirme sua senha" name="password2" required>
+              <input type="button" id="showPassword2" value="Mostrar senha" class="button" /></p>
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div> <br>
+            </div>
+              <button class="btn btn-primary btn-xl text-uppercase" type="submit">Confimar</button>          
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $(".endereco").hide();
+  });
+  $("#mostrar").click(function(){
+    $(".endereco").show();
+    $("#mostrar").hide();
+});
+
+$(document).ready(function(){
+ 
+  // Click event of the showPassword button
+  $('#showPassword').on('click', function(){
+     
+    // Get the password field
+    var passwordField = $('#password');
+ 
+    // Get the current type of the password field will be password or text
+    var passwordFieldType = passwordField.attr('type');
+ 
+    // Check to see if the type is a password field
+    if(passwordFieldType == 'password')
+    {
+        // Change the password field to text
+        passwordField.attr('type', 'text');
+ 
+        // Change the Text on the show password button to Hide
+        $(this).val('Esconder senha');
+    } else {
+        // If the password field type is not a password field then set it to password
+        passwordField.attr('type', 'password');
+ 
+        // Change the value of the show password button to Show
+        $(this).val('Mostrar senha');
+    }
+  });
+});
+
+// confimar senha
+$(document).ready(function(){
+ 
+  // Click event of the showPassword button
+  $('#showPassword2').on('click', function(){
+     
+    // Get the password field
+    var passwordField = $('#password2');
+ 
+    // Get the current type of the password field will be password or text
+    var passwordFieldType = passwordField.attr('type');
+ 
+    // Check to see if the type is a password field
+    if(passwordFieldType == 'password')
+    {
+        // Change the password field to text
+        passwordField.attr('type', 'text');
+ 
+        // Change the Text on the show password button to Hide
+        $(this).val('Esconder senha');
+    } else {
+        // If the password field type is not a password field then set it to password
+        passwordField.attr('type', 'password');
+ 
+        // Change the value of the show password button to Show
+        $(this).val('Mostrar senha');
+    }
+  });
+});
+</script>
+{% endblock conteudo %}

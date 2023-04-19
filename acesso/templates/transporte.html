@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="m-5">
+  <h2>Educação</h2>
+  <h4 class="mb-3">Transporte escolar</h4>  
+    <form aaction="{% url 'solicita_transporte' %}" method='POST'> 
+      {% csrf_token %}  
+        <div class="row">
+          <div class="col-sm-6">
+            <div>
+              <label class="form" for="endereco">Reside em</label>
+              <select id="endereco" class="form-control" required name="endereco">
+              <option value="Lagoa de Velhos">Lagoa de Velhos (município)</option>
+              <option value="Arapuá">Arapuá</option>     
+              <option value="Arisco">Arisco</option>              
+              <option value="Bom descanço">Bom Descanço</option>
+              <option value="Bom destino">Bom Destino</option>
+              <option value="Iguatú">Iguatú</option>
+              <option value="Jucuri">Jucurí</option>
+              <option value="Ligacao">Ligação</option>
+              <option value="Monte Alegre">Monte Alegre</option>              
+              <option value="Queimadas">Queimadas</option>
+              <option value="Umari">Umari</option>
+            </select>
+              <div class="valid-feedback">Valido</div>
+              <div class="invalid-feedback">Preencha o campo</div><br>
+          </div>
+          <div>
+            <label for="destino">Destino</label>
+            <select id="destino" class="form-control" required name="destino">
+              <option value="São Paulo">São Paulo do Potengi</option>
+              <option value="Natal">Natal</option>
+              <option value="Lagoa de Velhos">Lagoa de Velhos</option>
+            </select>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div><br>
+          </div>
+          <div>
+            <label for="escola">Instituição de Ensino</label>
+            <select id="escola" class="form-control" name="escola">
+              <option value="João Evangelista">Escola Estadual P. João Evangelista</option>
+              <option value="João Paulo II">Escolinha João Paulo II</option>     
+              <option value="São Sebastião">Escola Municipal São Sebastião</option>              
+              <option value="IFRN">Instituto Federal do Rio Grande do Norte SPP(IFRN)</option>
+              <option value="UFRN">Universidade Federal</option>
+              <option value="Universidade privada">Universidade Privada</option>
+
+            </select>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div><br>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div>
+            <label for="turno">Turno</label>
+            <select id="turno" class="form-control" required name="turno">
+              <option value="Matutino">Manhã</option>
+              <option value="Vespertino">Tarde</option>
+              <option value="Noturno">Noite</option>
+            </select>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div><br>
+          </div>
+          <div>
+            <label for="dia">Dias</label>
+            <select id="dia" class="form-control" required name="dia">
+              <option value="Segunda a Sexta">Segunda a sexta</option>              
+              <option value="Sabado">Sábado</option>
+            </select>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div> <br> <br> 
+          </div>
+            <input id="status" name="status" value="Indeferido"/>
+            <button class="btn btn-primary btn-xl text-uppercase" type="submit" id="enviar">Confirmar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="../js/lista.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#status").hide();
+}); </script>
+<script>
+
+  export default {
+    data() {
+      return {
+        selected: null,
+        options: [
+          { value: null, text: 'Please select an option' },
+          { value: 'a', text: 'This is First option' },
+          { value: 'b', text: 'Selected Option', disabled: true },
+          {
+            label: 'Grouped options',
+            options: [
+              { value: { C: '3PO' }, text: 'Option with object value' },
+              { value: { R: '2D2' }, text: 'Another option with object value' }
+            ]
+          }
+        ]
+      }
+    }
+  }
+
+</script>
+{% endblock conteudo %}

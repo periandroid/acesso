@@ -1,0 +1,237 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="m-4 p-4"></div>
+<header>
+<style>
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item.active {
+    height: 100vh;
+  }
+
+  .carousel-item:nth-child(1) {
+    background-image: url('/static/img/1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  /* Height for devices larger than 576px */
+  @media (min-width: 992px) {
+    #introCarousel {
+      margin-top: -58.59px;
+    }
+</style>
+<!-- Carousel wrapper -->
+<div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+
+  <!-- Inner -->
+  <div class="carousel-inner">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <div class="mask" style="background-color: rgba(0, 0, 100, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white text-center">
+            <h1 class="mb-4 text-white text-center">Olá, bem vindo(a) ao Acesso</h1>
+            <h5 class="text-white text-center">Aqui você acessa serviços da sua cidade</h5>
+            <h5 class="mb-4 text-white text-center">A qualquer hora, em qualquer lugar!</h5>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'login' %}" role="button" rel="nofollow" target="_blank">Realizar login</a>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'cadastro' %}" role="button" rel="nofollow" target="_blank">Não tenho cadastro</a>
+          </div>
+  </div>
+  <!-- Inner -->
+</header>
+<div class="mb-4">
+	<div class="container px-4 px-lg-5 mt-5">
+		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+			<div class="col mb-5">
+				<div class="card bg-light p-2">
+					<!-- Product image-->
+					<img class="card-img-top" src="{% static 'img/casa.png'%}" />
+					<!-- Product details-->
+					<div class="card-body">
+						<div class="text-center">
+							<h4 class="fw-bolder text-center">Acesso de casa</h4>
+							Acesse seus serviços de qualquer lugar
+						</div>
+					</div>
+					<!-- Product actions-->
+					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						<div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{% url 'login' %}">Acesse</a></div>
+					</div>
+				</div>
+			</div>
+		<div class="col mb-5">
+			<div class="card p-2">
+					<!-- Product image-->
+				<img class="card-img-top" src="{% static 'img/hora.png'%}" />
+					<!-- Product details-->
+				<div class="card-body">
+					<div class="text-center">
+							<!-- Product name-->
+						<h4 class="fw-bolder text-center">Acesso 24 horas</h4>
+							<!-- Product reviews-->
+							Acesso disponível a qualquer hora do dia
+					</div>
+				</div>
+					<!-- Product actions-->
+					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						<div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{% url 'login' %}">Acesse</a></div>
+					</div>
+			</div>
+		</div>
+		<div class="col mb-5">
+			<div class="card p-2">
+				<!-- Product image-->
+				<img class="card-img-top" src="{% static 'img/seguranca.png'%}" />
+				<!-- Product details-->
+				<div class="card-body">
+					<div class="text-center">
+						<!-- Product name-->
+						<h4 class="fw-bolder text-center">Segurança</h4>
+						<!-- Product price-->
+						Segurança dos seus dados pessoais
+					</div>
+				</div>
+					<!-- Product actions-->
+					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						<div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{% url 'login' %}">Acesse</a></div>
+					</div>
+			</div>
+		</div>
+</div>
+<li><hr class="dropdown-divider mb-5"/></li>
+<div class="container-fluid">
+	<h2>Desenvolvedores</h2>
+<!--Desenvolvedor-->
+	<div class="sec-banner bg0 p-t-80 p-b-50">
+		<div class="containe">
+			<div class="row">
+				<div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'img/banner-01.jpg' %}" alt="IMG-BANNER">
+
+						<a href="https://www.instagram.com/joao_carlos.neto/" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								<span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+									João Carlos
+								</span>
+
+								<span class="block1-info stext-102 trans-04 text-white">
+									Tec. Informática p internet
+								</span>
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Visitar perfil
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'img/banner-04.jpg' %}" alt="IMG-BANNER">
+
+						<a href="https://www.instagram.com/mfernandasil_/" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								<span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+									M. Fernanda
+								</span>
+
+								<span class="block1-info stext-102 trans-04 text-white">
+									Tec. Informática p internet
+								</span>
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Visitar perfil
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'img/banner-02.jpg' %}" alt="IMG-BANNER">
+
+						<a href="https://www.instagram.com/meduardasil_/" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								<span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+									M. Eduarda
+								</span>
+
+								<span class="block1-info stext-102 trans-04 text-white">
+									Tec. Informática p internet
+								</span>
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Visitar perfil
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'img/banner-03.jpg' %}" alt="IMG-BANNER">
+
+						<a href="https://www.instagram.com/xavier.paivaaa/" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								<span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+									Xavier Paiva
+								</span>
+
+								<span class="block1-info stext-102 trans-04 text-white">
+									Tec. Informática p internet
+								</span>
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Visitar perfil
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/slick-custom.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'jquery.magnific-popup.min.js.download' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'main.js.download' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'mdb.min.js.download' %}"></script>
+<!--===============================================================================================-->
+<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+		        delegate: 'a', // the selector for gallery item
+		        type: 'image',
+		        gallery: {
+		        	enabled:true
+		        },
+		        mainClass: 'mfp-fade'
+		    });
+	});
+</script>
+{% endblock conteudo %}

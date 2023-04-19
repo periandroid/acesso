@@ -1,0 +1,141 @@
+.bg-blue {
+  background-color: #00028f;
+}
+.text-blue {
+  color: #020092;
+}
+.bg-gray {
+  background-color: #5a5a5a9d;
+}
+.bg-red {
+  background-color: #ff0000;
+}
+.capa {
+  background-image: url(../img/brasao.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.manutencao {
+  opacity: 30%;
+}
+body {
+  color: #040B94;
+}
+
+h1, h2, h4, h6 {
+  color: #040B94;
+  text-align: center;
+}
+
+h5 {
+  color: #040B94;
+  text-align: justify;
+}
+
+p {
+  color: #ffffff;
+}
+
+a {
+  color: rgba(255, 0, 0, 0.473);
+}
+
+label {
+  color: #040B94;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 2px solid #ffffffb9;
+    text-align: left;
+    padding: 8px;
+  }
+  td {
+    color: rgb(0, 0, 0);
+  }
+
+  tr:nth-child(even) {
+    background-color: #00000015;
+  }
+
+form {
+    margin: 0 auto;
+    padding: 1em;
+    border: 1px solid #585858;
+    border-radius: 1em;
+    background-color: rgba(233, 233, 233, 0.067);
+}
+.login {
+  width: 400px;  
+}
+
+button {
+  height: 35;
+  text-align: justify;
+  color: #040B94;
+  background-color: #FFF;
+  border: 3px solid #040B94;
+  border-radius: 10%;
+}
+
+#cand {
+  color: #040B94;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.field.--has-error {
+  border-color: #f00;
+}
+
+.sec {
+  background-color:#0e911f;
+  width: 100%;
+  border-radius: 5%;
+}
+.carrossel {
+  text-align: center;
+  color: white;
+}
+
+#top {
+  color: rgb(255, 0, 0);
+  background-color: #040B94;
+}
+
+#confirmacao {
+  text-align: center;
+}
+
+#rodape {
+  background-color: #040B94;
+}
+.red {
+  background-color: #f00;
+}
+.imagem {
+  margin: 0 auto;
+  width: 400px;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: #040b94;
+}
+.transparente {
+  background-color: #0000;
+}
+#aviso {
+  text-align: center;
+}
+.botao_noticias {
+  height: 180%;
+  text-align: justify;
+  color: #000000;
+  background-color: #FFF;
+  border: 3px solid #000000;
+  border-radius: 10mm;
+  font-weight: 600;
+}

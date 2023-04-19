@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="container mt-5">
+    <div class="container p-5 my-5 border">
+        <h1>Bem vindo {{user.username}}</h1>  
+    </div>
+
+        <h2 class="mb-2">Editar dados</h2>
+
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Seus dados
+      </div>
+          <table id="datatablesSimple">
+                      <thead>
+                          <tr>
+                              <th>Nome</th>
+                              <th>Email</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td><a href="/editarDados/{{usuario.id}}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
+                        </tr>
+                  </tbody>
+          </table>
+          <div class="container p-5 my-5 border">
+            <h1>Serviços disponíveis</h1>  
+        </div>
+          <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card bg-light">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="{% static 'img/onibus.png'%}" />
+                        <!-- Product details-->
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 class="fw-bolder text-center">Transporte escolar</h5>
+                                Sec. Educação
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{% url 'solicita_transporte' %}">Solicitar</a></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+</div>
+{% endblock %}
