@@ -11,7 +11,7 @@ class TransporteEscolar(models.Model):
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')    
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=14)
     numero_casa = models.IntegerField(null=True)
     rua = models.TextField(max_length=25, null=True)
     bairro = models.TextField(max_length=20, null=True)
