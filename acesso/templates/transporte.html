@@ -2,9 +2,9 @@
 {% load static %}
 {% block conteudo %}
 <div class="m-5">
-  <h2>Educação</h2>
+  <h2><b>Educação</b></h2>
   <h4 class="mb-3">Transporte escolar</h4>  
-    <form aaction="{% url 'solicita_transporte' %}" method='POST'> 
+    <form aaction="{% url 'servico01' %}" method='POST'> 
       {% csrf_token %}  
         <div class="row">
           <div class="col-sm-6">
@@ -57,6 +57,7 @@
             <select id="turno" class="form-control" required name="turno">
               <option value="Matutino">Manhã</option>
               <option value="Vespertino">Tarde</option>
+              <option value="Matutino e Vespertino">Manhã e tarde</option>
               <option value="Noturno">Noite</option>
             </select>
             <div class="valid-feedback">Valido</div>

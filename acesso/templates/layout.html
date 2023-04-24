@@ -57,39 +57,158 @@
             #myTable tr.header, #myTable tr:hover {
               background-color: #f1f1f1;
             }
+            #register{
+
+              color: #020092;
+            }
+            
+            h1 {
+                text-align: center
+            }
+            
+            input {
+                padding: 10px;
+                width: 100%;
+                font-size: 17px;
+                border: 1px solid #aaaaaa;
+                border-radius: 10px;
+                -webkit-appearance: none;
+            }
+            
+            
+            
+            .tab input:focus{
+            
+              border:1px solid #6a1b9a !important;
+              outline: none;
+            }
+            
+            input.invalid {
+             
+                border:1px solid #e03a0666;
+            }
+            
+            .tab {
+                display: none
+            }
+            
+            button {
+                background-color: #020092;
+                color: #ffffff;
+                border: none;
+                border-radius: 50%;
+                padding: 10px 20px;
+                font-size: 17px;
+                cursor: pointer
+            }
+            
+            button:hover {
+                opacity: 0.8
+            }
+            
+            button:focus{
+            
+              outline: none !important;
+            }
+            
+            #prevBtn {
+                background-color: #bbbbbb
+            }
+            
+            
+            .all-steps{
+                  text-align: center;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                width: 100%;
+                display: inline-flex;
+                justify-content: center;
+            }
+            
+            .step {
+                   height: 40px;
+                width: 40px;
+                margin: 0 2px;
+                background-color: #aaaaff;
+                border: none;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 15px;
+                color: #020092;
+                opacity: 0.5;
+            }
+            
+            .step.active {
+                opacity: 1
+            }
+            
+            
+            .step.finish {
+               color: #fff;
+               background: #020092;
+               opacity: 1;
+            
+            }
             </style>
     </head>
     <body class="sb-nav-fixed">
-        <!-- Menu-->
-        <nav class=" container navbar navbar-expand-lg navbar-light bg-white">
-            <img class="m-2" src="{% static 'img/logo3.png'%}" width="250">
-            <div class="col-sm-5 p-5"></div>
-                <div class="container px-4 px-lg-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                    {% if user.is_authenticated %}
+                    <div class="container px-5">
+                      <a class="navbar-brand" href="{% url 'dashboard'%}"><span class="fw-bolder text-primary">ACESSO</span></a> 
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="bi bi-list-ul"></span></button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">                   
+                      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                        <div class="container px-5"> 
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                              <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'paginaInicial' %}"><i class="bi bi-house-fill">Inicio</i></a></li>
+                              <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'dashboard' %}"><i class="bi bi-person-fill">Perfil</i></a></li>
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-collection-fill">Serviços</i></a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                                  <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'servico01' %}">Transporte escolar <i class="bi bi-journals"></i></a></li>
+                                </ul>
+                              </li>
+                              <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="bi bi-reply-fill">Sair</i></a></li>
+                            </ul>
+                    {% else %}
+                    <div class="container px-5">
+                    <a class="navbar-brand" href="{% url 'index'%}"><span class="fw-bolder text-primary">ACESSO</span></a> 
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="bi bi-list"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                          {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'paginaInicial' %}">Página inicial</a></li>
-                            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'solicita_transporte' %}">Transporte escolar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Sair</a></li>
-                          {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'index'%}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}">Cadastrar</a></li>
-                          {% endif %} 
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </nav>
-        <div class="bg-light"></div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">                   
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                      <div class="container px-5">
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index'%}"><i class="bi bi-house-fill">Inicio</i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person-fill">Entrar</i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}"><i class="bi bi-person-plus-fill">Cadastrar</i></a></li>
+                          </ul>
+                    {% endif %} 
+                  </ul>
+              </div>
+            </div>
+          </div>
+      </nav>
         <div class="p-1 bg-red"> </div>
         <div class="p-1 bg-blue"></div>
+        
         {% block conteudo %}
         {% endblock conteudo %}
                 <!-- Footer-->
             
                 <div id="rodape" class="mt-5 p-3 text-center container-fluid">            
-                    <p><img class="m-2" src="{% static 'img/logo (2).png'%}" width="50">	© Acesso - Lagoa de Velhos</p>  
+                    <p><img class="m-2" src="{% static 'img/logo (2).png'%}" width="50">	© Acesso - Lagoa de Velhos</p>
+                    <a href="{% url 'login'%}"><i class="bi bi-person-fill m-1"></i></a>
+                    <a href="https://www.instagram.com/acesso.lv/"><i class="bi bi-instagram m-1"></i></a>
+                    <a href="https://youtu.be/Z1FhHzpkoP0"><i class="bi bi-youtube m-1"></i></a>
                     </div>
                     <div class="p-1 red"></div>
                 <!-- Bootstrap core JS-->
@@ -103,6 +222,12 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                <script src="js/jquery.min.js"></script>
+                <script src="js/popper.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/main.js"></script>
+                <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7bac7e259a651abd","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.3.0","si":100}' crossorigin="anonymous"></script>
+
             </body>
         </html>
         

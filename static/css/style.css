@@ -66,9 +66,8 @@ table {
 form {
     margin: 0 auto;
     padding: 1em;
-    border: 1px solid #585858;
+    border: 2px solid #040B94;
     border-radius: 1em;
-    background-color: rgba(233, 233, 233, 0.067);
 }
 .login {
   width: 400px;  
@@ -116,6 +115,9 @@ button {
 }
 .red {
   background-color: #f00;
+}
+.direita {
+  text-align: right;
 }
 .imagem {
   margin: 0 auto;

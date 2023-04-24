@@ -1,22 +1,25 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block conteudo %}
-<div class="text-center container-fluid mt-5 transparente">
-  <div class="row transparente">
-    <div class="col-sm-12 transparente">
-              <h1>Login</h1>
-              <div class="m-5 transparente">
-                <form action="{% url 'login' %}" class="login was-validated" method='POST'>
-                  {% csrf_token %}      
-                  <div class="transparente">
+<div class="container mt-5">
+<div class="text-center container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{% static 'img/login.png'%}" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 contents">
+          <form id="regForm" action="" method="POST">
+            {% csrf_token %}   
+              <h1 id="register">Login</h1>  
+                  <div class="transparente mt-2">
                     <label for="email"><b>Email</b></label>
-                    <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
+                    <input type="text" id="email" name="email" placeholder="Entre com o email cadastrado">
                     <div class="valid-feedback transparente">Valido</div>
                     <div class="invalid-feedback transparente">Preencha o campo</div> <br>
                   </div>
                   <div class="mb-3 transparente">
                     <label for="senha"><b>Senha</b></label>
-                    <input id="senha" type="password" class="form-control" name="senha" placeholder="Digite aqui sua senha">  
+                    <input id="senha" type="password" name="senha" placeholder="Digite aqui sua senha">  
                     <div class="valid-feedback transparente">Valido</div>
                     <div class="invalid-feedback transparente">Preencha o campo</div>
                   </div>

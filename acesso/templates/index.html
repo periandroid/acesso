@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block conteudo %}
-<div class="m-4 p-4"></div>
 <header>
 <style>
   .carousel-inner,
@@ -11,33 +10,24 @@
   }
 
   .carousel-item:nth-child(1) {
-    background-image: url('/static/img/1.jpeg');
+    background-image: url('/static/img/2.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
   }
-  /* Height for devices larger than 576px */
-  @media (min-width: 992px) {
-    #introCarousel {
-      margin-top: -58.59px;
-    }
 </style>
 <!-- Carousel wrapper -->
 <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
-
-  <!-- Inner -->
   <div class="carousel-inner">
-    <!-- Single item -->
     <div class="carousel-item active">
       <div class="mask" style="background-color: rgba(0, 0, 100, 0.7);">
         <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-white text-center">
-            <h1 class="mb-4 text-white text-center">Olá, bem vindo(a) ao Acesso</h1>
-            <h5 class="text-white text-center">Aqui você acessa serviços da sua cidade</h5>
-            <h5 class="mb-4 text-white text-center">A qualquer hora, em qualquer lugar!</h5>
-            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'login' %}" role="button" rel="nofollow" target="_blank">Realizar login</a>
-            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'cadastro' %}" role="button" rel="nofollow" target="_blank">Não tenho cadastro</a>
-          </div>
+          <div class="text-white text-center m-3">
+            <h1 class="text-white text-center"><b>Acesso:</b> Lagoa de Velhos</h1>
+			<h6 class="container opacity-75 mb-2 text-white text-center">Aqui você acessa os serviços da sua cidade de onde estiver!</h6>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'login' %}" role="button" rel="nofollow">Realizar login</a>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'cadastro' %}" role="button" rel="nofollow">Não tenho cadastro</a>
+		</div>
   </div>
   <!-- Inner -->
 </header>
