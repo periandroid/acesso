@@ -23,7 +23,7 @@
                           <tr>
                             <td>{{user.username}}</td>
                             <td>{{user.email}}</td>
-                            <td><a href="/editarDados/{{usuario.id}}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
+                            <td><a href="{% url 'editarDados' id=user.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
                         </tr>
                   </tbody>
           </table>

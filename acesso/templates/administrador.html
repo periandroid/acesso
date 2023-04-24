@@ -18,7 +18,7 @@
                                             <th>Instituição de ensino</th>
                                             <th>Cidade</th>
                                             <th>Turno</th>
-                                            <th>Redidencia</th>
+                                            <th>Residência</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -33,8 +33,8 @@
                                             <td>{{ transporte.destino }}</td>
                                             <td>{{ transporte.turno }}</td>
                                             <td>{{ transporte.endereco }}</td>
-                                            <td>{{ transporte.status }} <a href="/editarstatus/{{transporte.id}}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
-                                            <td><a href="/remover/{{transporte.id}}"><img class="m-2" src="{% static 'img/delete.png'%}" width="20"></a></td>
+                                            <td>{{ transporte.status }} <a href="{% url 'editarstatus' id=transporte.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
+                                            <td><a href="{% url 'remover' id=transporte.id %}"><img class="m-2" src="{% static 'img/delete.png'%}" width="20"></a></td>
                                         </tr>
                                             {% endfor %}
                     
@@ -49,7 +49,7 @@
                                             <th>Instituição de ensino</th>
                                             <th>Cidade</th>
                                             <th>Turno</th>
-                                            <th>Redidencia</th>
+                                            <th>Residência</th>
                                             <th>Status</th>
                                         </tr>
                                     </tfoot>
