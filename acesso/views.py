@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+from .models import Perfil
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
 from .models import TransporteEscolar
-from .models import Perfil
 
 def index (request):
     return render (request, 'index.html');
@@ -35,8 +35,24 @@ def solicita_transporte (request):
             turno = request.POST['turno']
             dia = request.POST['dia']
             status = request.POST['status']
+            
+            #Validações    
+            if not escola.strip(): 
+                messages.error(request, "Escola não informada, informe a escola")
+                return redirect('solicita_transporte')
+            if not endereco.strip():
+                messages.error(request, "Endereço não informado, informe o endereço")
+                return redirect('solicita_transporte')
+            if not turno.strip():
+                messages.error(request, "Turno não informada, informe o turno")
+                return redirect('solicita_transporte')
+            if not dia.strip():
+                messages.error(request, "Dia não informado, informe o dia")
+                return redirect('solicita_transporte')
+            
             transporte = TransporteEscolar(escola = escola,  endereco = endereco,  destino = destino, turno = turno, dia = dia, status = status)
             transporte.save()
+            messages.success(request,'Sua solicitação foi enviada com sucesso!')
             return redirect('paginaInicial')
         else:
             return render (request, 'transporte.html');
@@ -50,14 +66,13 @@ def remover(request, id):
         transporte = TransporteEscolar.objects.get(pk=id)
         if transporte != None:
             transporte.delete()
-            messages.success(request, "Objeto removido com sucesso")    
+            messages.success(request, "Solicitação removida com sucesso")    
         else:
-            messages.error(request, "Objeto não encontrado")
+            messages.error(request, "Solicitação não encontrado")
         
         return redirect('administrador');
     else:
         return render('login')
-
 
 def editarstatus(request, id):
     transporte = TransporteEscolar.objects.get(pk=id)
@@ -72,26 +87,31 @@ def editarstatus(request, id):
         return redirect('administrador') 
     else:
         return render(request, "deferir.html", ctx)
-    
-    
+
 def editarDados(request, id):
     usuario = Perfil.objects.get(pk=id)
     ctx = {
         'c': usuario
     }
     if request.POST:
-        n = request.POST.get("nome")
-        c = request.POST.get("cpf")
-        e = request.POST.get("email")
+        n = request.POST["nome"]
+        c = request.POST["cpf"]
+        e = request.POST["email"]
 
-        usuario.status = n
+        usuario.nome = n
         usuario.cpf = c
         usuario.email = e
         usuario.save()
         return redirect('dashboard') 
     else:
         return render(request, "editar.html", ctx)
-
+    
+def dashboard(request):
+    if request.user.is_authenticated:
+        return render(request,'dashboard.html',);
+    else:
+        return redirect('index')
+    
 def cadastro(request):
     if request.method == 'POST':
         nome = request.POST['nome']
@@ -128,7 +148,7 @@ def cadastro(request):
         user = User.objects.create_user(username=nome, email=email, password=senha)
         perfil = Perfil.objects.create(user=user,  cpf=cpf,  numero_casa=numero_casa, rua=rua, bairro=bairro, complemento=complemento )
         perfil.save()
-        print('Usuário criado com sucesso')
+        messages.success(request,'Usuário criado com sucesso!')
         return redirect('login')
     else:
         return render(request, 'cadastro.html')  
@@ -139,10 +159,10 @@ def login(request):
         senha = request.POST['senha']
         #Validações
         if not email.strip():
-            print('O email não pode ficar em branco')
+            messages.warning(request,'Preencha o campo do email')
             return redirect('login')
         if not senha.strip():
-            print('A senha não pode ficar em branco')
+            messages.warning(request,'Preencha o campo da senha')
             return redirect('login')
         if User.objects.filter(email=email).exists():
             nome = User.objects.filter(email=email).values_list('username', flat=True).get()
@@ -150,17 +170,16 @@ def login(request):
             user = auth.authenticate(request, username=nome, password=senha)
             if user is not None:
                 auth.login(request, user)
-                print('Login realizado com sucesso')
+                messages.success(request,'Login realizado com sucesso')
                 return redirect('dashboard')
-        return redirect('login')
+            else:
+                messages.error(request,'Senha incorreta')
+            return redirect('login')
+        else:
+            messages.error(request,'Email incorreto')
+            return redirect('login')
     else:
         return render(request, 'login.html')
-
-def dashboard(request):
-    if request.user.is_authenticated:
-        return render(request,'dashboard.html',);
-    else:
-        return redirect('index')
 
 def logout(request):
     auth.logout(request)

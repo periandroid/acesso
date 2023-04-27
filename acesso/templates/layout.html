@@ -197,8 +197,15 @@
             </div>
           </div>
       </nav>
-        <div class="p-1 bg-red"> </div>
-        <div class="p-1 bg-blue"></div>
+<div class="p-1 bg-red"> </div>
+<div class="p-1 bg-blue"></div>        
+{% for message in messages %}
+<div class="container-fluid text-white m-2">
+  <div class="alert {{ message.tags }} alert-dismissible rounded-3" role="alert" >
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
         
         {% block conteudo %}
         {% endblock conteudo %}
@@ -206,9 +213,9 @@
             
                 <div id="rodape" class="mt-5 p-3 text-center container-fluid">            
                     <p><img class="m-2" src="{% static 'img/logo (2).png'%}" width="50">	© Acesso - Lagoa de Velhos</p>
-                    <a href="{% url 'login'%}"><i class="bi bi-person-fill m-1"></i></a>
-                    <a href="https://www.instagram.com/acesso.lv/"><i class="bi bi-instagram m-1"></i></a>
-                    <a href="https://youtu.be/Z1FhHzpkoP0"><i class="bi bi-youtube m-1"></i></a>
+                    <a href="{% url 'login'%}"><i class="bi bi-person-fill text-white m-1"></i></a>
+                    <a href="https://www.instagram.com/acesso.lv/"><i class="bi bi-instagram text-white m-1"></i></a>
+                    <a href="https://youtu.be/Z1FhHzpkoP0"><i class="bi bi-youtube text-white m-1"></i></a>
                     </div>
                     <div class="p-1 red"></div>
                 <!-- Bootstrap core JS-->

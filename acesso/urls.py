@@ -11,8 +11,7 @@ urlpatterns = [
     path('administrador',views.administrador, name='administrador'),
     path('solicita_transporte',views.solicita_transporte, name='solicita_transporte'),   
     path('deferir',views.deferir, name='deferir'), 
-    path('editarDados',views.editarDados, name='editarDados'), 
     path('remover/<int:id>', views.remover, name='remover'),
     path('editarstatus/<int:id>', views.editarstatus, name='editarstatus'),
-    path('editarDados/<int:id>',views.editarDados, name='editarDados')
+    path('editarDados/<int:id>',views.editarDados, name="editarDados")
 ]
