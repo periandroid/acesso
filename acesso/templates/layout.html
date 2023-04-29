@@ -187,9 +187,9 @@
                           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="{% url 'index'%}"><i class="bi bi-house-fill">Inicio</i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person-fill">Entrar</i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}"><i class="bi bi-person-plus-fill">Cadastrar</i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index'%}"><i class="bi bi-house-fill"> Inicio</i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person-fill"> Entrar</i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}"><i class="bi bi-person-plus-fill"> Cadastrar</i></a></li>
                           </ul>
                     {% endif %} 
                   </ul>
@@ -200,7 +200,7 @@
 <div class="p-1 bg-red"> </div>
 <div class="p-1 bg-blue"></div>        
 {% for message in messages %}
-<div class="container-fluid text-white m-2">
+<div class="container-fluid text-white mt-4">
   <div class="alert {{ message.tags }} alert-dismissible rounded-3" role="alert" >
     {{ message }}
   </div>

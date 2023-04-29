@@ -3,31 +3,48 @@
 {% block conteudo %}
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid px-4">
-            <h2 class="mt-4">Editar os dados</h2>
+        <div class="container-fluid px-4 p-5">
         <form action="" method="POST">            
             {% csrf_token %}              
             <div class="row">
+              <div class="col-md-6">
+                <img src="{% static 'img/login.png'%}" class="img-fluid"/>
+              </div>
               <div class="col-sm-6">
-                <div>
-                  <label class="form" for="nome"><b>Nome</b></label>
-                  <input id="nome" class="form-control" name="nome" type="text" placeholder="Informe seu nome" required>
+                <h2>Editar dados </h2>
+                <!---div>
+                  <label class="form" for="nome">Nome</label>
+                  <input id="nome" class="form-control" name="nome" type="text" placeholder="Informe seu nome" value="{{c.nome}}" required>
                   <div class="valid-feedback">Valido</div>
                   <div class="invalid-feedback">Preencha o campo</div> <br>
-                </div>
+                </div-->
                 <div>
-                  <label for="cpf"><b>CPF</b></label>
-                  <input name="cpf" type="cpf" id="cpf" class="form-control" placeholder="Informe seu CPF" onkeypress="$(this).mask('000.000.000-00')" required/>
+                  <label for="cpf">CPF</label>
+                  <input name="cpf" type="cpf" id="cpf" class="form-control" placeholder="Informe seu CPF" onkeypress="$(this).mask('000.000.000-00')" value="{{c.cpf}}"  required/>
+                </div>
+                <!--div>
+                  <label for="email">Email</label>
+                  <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado" required name="email" value="{{c.email}}" >
                   <div class="valid-feedback">Valido</div>
                   <div class="invalid-feedback">Preencha o campo</div> <br>
+                </div-->
+                <p class="mt-2">
+                    <label for="numero_casa">Número da casa</label>
+                    <input id="numero_casa" type="text" class="form-control" placeholder="Informe o número da sua residência" name="numero_casa" value="{{c.numero_casa}}"></p>
+                <p class="mt-2">
+                    <label for="rua">Rua</label>
+                    <input id="rua" type="text" class="form-control" placeholder="Informe a rua da sua residência" name="rua" value="{{c.rua}}"></p>
+                <p class="mt-2">
+                    <label for="bairro">Bairro</label>
+                    <input id="bairro" type="text" class="form-control" placeholder="Informe o bairro da sua residência" name="bairro" value="{{c.bairro}}"></p>
+                <p class="mt-2">
+                    <label for="complemento">Complemento</label>
+                    <input id="complemento" type="text" class="form-control" placeholder="Informe um complemento, Ex: Casa, Condomínio, Zona Rural..." name="complemento" value="{{c.complemento}}"></p>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase mt-4" type="submit">Confirmar</button>                                
+                    <a class="m-5 text-right" href="{% url 'dashboard'%}">Voltar</a>
                 </div>
-                <div>
-                  <label for="email"><b>Email</b></label>
-                  <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
-                  <div class="valid-feedback">Valido</div>
-                  <div class="invalid-feedback">Preencha o campo</div> <br>
-                </div>
-            <input type="submit" class="btn btn-primary btn-xl text-uppercase" value="Salvar"/>
+          </div>  
         </form>
     </main>
 </div>

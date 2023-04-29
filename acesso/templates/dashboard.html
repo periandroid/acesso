@@ -3,10 +3,10 @@
 {% block conteudo %}
 <div class="container mt-5">
     <div class="container p-5 my-5 border">
-        <h1>Bem vindo {{user.username}}</h1>  
+        <h2>Bem vindo {{user.username}}</h2>  
     </div>
 
-        <h2 class="mb-2">Editar dados</h2>
+        <h2 class="mb-2">Seus dados</h2>
 
         <div class="card-header">
           <i class="fas fa-table me-1"></i>
@@ -17,17 +17,70 @@
                           <tr>
                               <th>Nome</th>
                               <th>Email</th>
+                              <th>CPF</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr>
                             <td>{{user.username}}</td>
                             <td>{{user.email}}</td>
-                            <td><a href="{% url 'editarDados' id=user.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
+                            {% if usuario_list %}
+                            {% for c in usuario_list %}
+                            <td>{{c.cpf}}</td>
+                            {% endfor %}
+        
+                            {% else %}
+                                <p>No polls are available.</p>
+                            {% endif %}
                         </tr>
                   </tbody>
           </table>
-          <div class="container p-5 my-5 border">
+
+        <div class="card-header">
+            <i class="bi bi-house-fill me-1"></i>
+        </div>
+            <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>N° Casa</th>
+                                <th>Rua</th>
+                                <th>Bairro</th>
+                                <th>Complemento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if usuario_list %}
+                            
+                            {% for usuario in usuario_list %}
+                            <tr>
+                                <td>{{usuario.numero_casa}}</td>
+                                <td>{{usuario.rua}}</td>
+                                <td>{{usuario.bairro}}</td>
+                                <td>{{usuario.complemento}}</td>
+                                <td><a href="{% url 'editarDados' id=user.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
+                            </tr>
+                                {% endfor %}
+        
+                                {% else %}
+                                    <p>No polls are available.</p>
+                                {% endif %}
+                            </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>N° Casa</th>
+                                <th>Rua</th>
+                                <th>Bairro</th>
+                                <th>Complemento</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        <div class="container p-5 my-5 border">
             <h1>Serviços disponíveis</h1>  
         </div>
           <div class="container px-4 px-lg-5 mt-5">

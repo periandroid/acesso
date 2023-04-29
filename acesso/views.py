@@ -9,7 +9,8 @@ def index (request):
     return render (request, 'index.html');
 
 def administrador (request):
-    if request.user.is_staff:
+    #if request.user.is_staff:
+    if request.user.is_authenticated:
         transporte_escolar_list = TransporteEscolar.objects.all()
         usuario_list = Perfil.objects.all()
         return render (request,'administrador.html', {'transporte_escolar_list': transporte_escolar_list, 'usuario_list': usuario_list},);
@@ -23,8 +24,14 @@ def paginaInicial (request):
         return render('index')
 
 def deferir (request):
-    return render (request, 'deferir.html');
-
+    if request.user.is_staff:
+        return render (request, 'deferir.html');
+    else:
+        if request.user.is_authenticated:
+                return render (request, 'usuario.html');
+        else:
+            return render('index')
+        
 
 def solicita_transporte (request):
     if request.user.is_authenticated:
@@ -62,7 +69,8 @@ def solicita_transporte (request):
 
 
 def remover(request, id):
-    if request.user.is_staff:
+    #if request.user.is_staff:
+    if request.user.is_authenticated:
         transporte = TransporteEscolar.objects.get(pk=id)
         if transporte != None:
             transporte.delete()
@@ -84,6 +92,7 @@ def editarstatus(request, id):
 
         transporte.status = status
         transporte.save()
+        messages.success(request, "Status atualizado com sucesso")
         return redirect('administrador') 
     else:
         return render(request, "deferir.html", ctx)
@@ -94,13 +103,16 @@ def editarDados(request, id):
         'c': usuario
     }
     if request.POST:
-        n = request.POST["nome"]
-        c = request.POST["cpf"]
-        e = request.POST["email"]
-
-        usuario.nome = n
-        usuario.cpf = c
-        usuario.email = e
+        cpf = request.POST["cpf"]
+        numero_casa = request.POST["numero_casa"]
+        rua = request.POST["rua"]
+        bairro = request.POST["bairro"]
+        complemento = request.POST["complemento"]
+        usuario.numero_casa = numero_casa
+        usuario.rua = rua
+        usuario.bairro = bairro
+        usuario.complemento = complemento
+        usuario.cpf = cpf
         usuario.save()
         return redirect('dashboard') 
     else:
@@ -108,7 +120,8 @@ def editarDados(request, id):
     
 def dashboard(request):
     if request.user.is_authenticated:
-        return render(request,'dashboard.html',);
+        usuario_list = Perfil.objects.all()
+        return render (request,'dashboard.html', {'usuario_list': usuario_list},)
     else:
         return redirect('index')
     
@@ -138,17 +151,15 @@ def cadastro(request):
             print('O campo precisa ser preenchido')
             return redirect('cadastro')
         if senha != senha2:
-            print('As senhas não são iguais.')
+            messages.error(request,'ATENÇÃO, As senhas estão diferentes.')
             return redirect('cadastro')
         if User.objects.filter(email=email).exists():
-            print('Usuário já cadastrado')
+            messages.error(request,'ATENÇÃO, Já existe um usuario cadastrado com esse email.')
             return redirect('cadastro')
-        if type(numero_casa) != int:
-            numero_casa = None
         user = User.objects.create_user(username=nome, email=email, password=senha)
         perfil = Perfil.objects.create(user=user,  cpf=cpf,  numero_casa=numero_casa, rua=rua, bairro=bairro, complemento=complemento )
         perfil.save()
-        messages.success(request,'Usuário criado com sucesso!')
+        messages.success(request,'Você foi cadastrado com sucesso!')
         return redirect('login')
     else:
         return render(request, 'cadastro.html')  
