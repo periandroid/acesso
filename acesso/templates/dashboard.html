@@ -17,27 +17,21 @@
                           <tr>
                               <th>Nome</th>
                               <th>Email</th>
-                              <th>CPF</th>
+                              <th>Editar dados</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr>
                             <td>{{user.username}}</td>
                             <td>{{user.email}}</td>
-                            {% if usuario_list %}
-                            {% for c in usuario_list %}
-                            <td>{{c.cpf}}</td>
-                            {% endfor %}
-        
-                            {% else %}
-                                <p>No polls are available.</p>
-                            {% endif %}
+                            <td><a href="{% url 'editarDados' id=user.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
                         </tr>
                   </tbody>
           </table>
 
-        <div class="card-header">
+        <!--div class="card-header mt-5">
             <i class="bi bi-house-fill me-1"></i>
+            Endereço
         </div>
             <table id="datatablesSimple">
                         <thead>
@@ -52,6 +46,8 @@
                             {% if usuario_list %}
                             
                             {% for usuario in usuario_list %}
+
+                            {% if user.username == usuario.nome %}
                             <tr>
                                 <td>{{usuario.numero_casa}}</td>
                                 <td>{{usuario.rua}}</td>
@@ -59,6 +55,8 @@
                                 <td>{{usuario.complemento}}</td>
                                 <td><a href="{% url 'editarDados' id=user.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
                             </tr>
+                                {% endif %}
+
                                 {% endfor %}
         
                                 {% else %}
@@ -78,7 +76,60 @@
             </div>
         </div>
         </div>
-    </div>
+    </div-->
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h2 class="mt-4">Suas requisições</h2>              
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Transporte escolar
+                    </div>
+                        <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Instituição</th>
+                                            <th>Cidade</th>
+                                            <th>Turno</th>
+                                            <th>Reside em</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if transporte_escolar_list %}
+
+                                            {% for transporte in transporte_escolar_list %}
+
+                                            {% if user.username == transporte.nome %}
+                                                <tr>
+                                                    <td>{{ transporte.escola }}</td>
+                                                    <td>{{ transporte.destino }}</td>
+                                                    <td>{{ transporte.turno }}</td>
+                                                    <td>{{ transporte.endereco }}</td>
+                                                    <td>{{ transporte.status }}</td>
+                                                    <td><a href="{% url 'remover' id=transporte.id %}"><img class="m-2" src="{% static 'img/delete.png'%}" width="20"></a></td>
+                                                </tr>
+                                                {% else %}
+                                        
+                                            {% endif %}
+
+                                            {% endfor %}
+                                
+                                            {% else %}
+                                                <p class="m-2 text-dark opacity-50">Não há solicitações cadastradas.</p>
+                                            {% endif %}
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
 
         <div class="container p-5 my-5 border">
             <h1>Serviços disponíveis</h1>  

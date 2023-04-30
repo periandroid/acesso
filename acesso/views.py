@@ -9,26 +9,26 @@ def index (request):
     return render (request, 'index.html');
 
 def administrador (request):
-    #if request.user.is_staff:
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         transporte_escolar_list = TransporteEscolar.objects.all()
         usuario_list = Perfil.objects.all()
         return render (request,'administrador.html', {'transporte_escolar_list': transporte_escolar_list, 'usuario_list': usuario_list},);
     else:
         return render('index')
-
-def paginaInicial (request):
+    
+def dashboard(request):
     if request.user.is_authenticated:
-        return render (request, 'usuario.html');
-    else:
-        return render('index')
+        transporte_escolar_list = TransporteEscolar.objects.all()
+        usuario_list = Perfil.objects.all()
+        return render (request,'dashboard.html', {'transporte_escolar_list': transporte_escolar_list, 'usuario_list': usuario_list},);
+        return redirect('index')
 
 def deferir (request):
     if request.user.is_staff:
         return render (request, 'deferir.html');
     else:
         if request.user.is_authenticated:
-                return render (request, 'usuario.html');
+                return render (request, 'dashboard.html');
         else:
             return render('index')
         
@@ -36,6 +36,7 @@ def deferir (request):
 def solicita_transporte (request):
     if request.user.is_authenticated:
         if request.POST:
+            nome = request.POST['nome']
             escola = request.POST['escola']
             endereco = request.POST['endereco']
             destino = request.POST['destino']
@@ -44,6 +45,9 @@ def solicita_transporte (request):
             status = request.POST['status']
             
             #Validações    
+            if not nome.strip(): 
+                messages.error(request, "Nome não informado, informe o seu nome")
+                return redirect('solicita_transporte')
             if not escola.strip(): 
                 messages.error(request, "Escola não informada, informe a escola")
                 return redirect('solicita_transporte')
@@ -56,32 +60,28 @@ def solicita_transporte (request):
             if not dia.strip():
                 messages.error(request, "Dia não informado, informe o dia")
                 return redirect('solicita_transporte')
-            
-            transporte = TransporteEscolar(escola = escola,  endereco = endereco,  destino = destino, turno = turno, dia = dia, status = status)
+            transporte = TransporteEscolar(nome = nome, escola = escola,  endereco = endereco,  destino = destino, turno = turno, dia = dia, status = status)
             transporte.save()
             messages.success(request,'Sua solicitação foi enviada com sucesso!')
-            return redirect('paginaInicial')
+            return redirect('dashboard')
         else:
             return render (request, 'transporte.html');
     else:
         return render('login')
 
-
-
 def remover(request, id):
-    #if request.user.is_staff:
     if request.user.is_authenticated:
         transporte = TransporteEscolar.objects.get(pk=id)
         if transporte != None:
             transporte.delete()
-            messages.success(request, "Solicitação removida com sucesso")    
+            messages.warning(request, "Solicitação deletada com sucesso")    
         else:
             messages.error(request, "Solicitação não encontrado")
         
-        return redirect('administrador');
+        return redirect('dashboard');
     else:
         return render('login')
-
+    
 def editarstatus(request, id):
     transporte = TransporteEscolar.objects.get(pk=id)
     ctx = {
@@ -117,13 +117,6 @@ def editarDados(request, id):
         return redirect('dashboard') 
     else:
         return render(request, "editar.html", ctx)
-    
-def dashboard(request):
-    if request.user.is_authenticated:
-        usuario_list = Perfil.objects.all()
-        return render (request,'dashboard.html', {'usuario_list': usuario_list},)
-    else:
-        return redirect('index')
     
 def cadastro(request):
     if request.method == 'POST':

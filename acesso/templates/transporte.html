@@ -75,7 +75,8 @@
             <div class="invalid-feedback">Preencha o campo</div> <br> <br>
           </div>
             <input id="status" name="status" value="Análise"/>
-            <button class="btn btn-primary btn-xl text-uppercase" type="submit" id="enviar">Confirmar</button>
+            <input id="nome" name="nome" value="{{user.username}}">
+            <button class="btn btn-primary btn-xl text-uppercase" type="submit" id="enviar">Confirmar</button><a class="m-5 text-right" href="{% url 'dashboard'%}">Voltar</a>
         </div>
         </form>
       </div>
@@ -87,6 +88,7 @@
 <script>
   $(document).ready(function(){
   $("#status").hide();
+  $("#nome").hide();
 }); </script>
 <script>
 

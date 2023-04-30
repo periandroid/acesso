@@ -34,7 +34,6 @@
                                             <td>{{ transporte.turno }}</td>
                                             <td>{{ transporte.endereco }}</td>
                                             <td>{{ transporte.status }} <a href="{% url 'editarstatus' id=transporte.id %}"><img class="m-2" src="{% static 'img/update.png'%}" width="20"></a></td>
-                                            <td><a href="{% url 'remover' id=transporte.id %}"><img class="m-2" src="{% static 'img/delete.png'%}" width="20"></a></td>
                                         </tr>
                                             {% endfor %}
                     

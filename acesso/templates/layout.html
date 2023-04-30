@@ -166,15 +166,14 @@
                           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                              <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'paginaInicial' %}"><i class="bi bi-house-fill">Inicio</i></a></li>
-                              <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'dashboard' %}"><i class="bi bi-person-fill">Perfil</i></a></li>
+                              <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'dashboard' %}">Inicio</a></li>
                               <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-collection-fill">Serviços</i></a>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Serviços</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                                  <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'solicita_transporte' %}">Transporte escolar <i class="bi bi-journals"></i></a></li>
+                                  <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'solicita_transporte' %}">Transporte escolar</a></li>
                                 </ul>
                               </li>
-                              <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="bi bi-reply-fill">Sair</i></a></li>
+                              <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Sair</a></li>
                             </ul>
                     {% else %}
                     <div class="container px-5">
@@ -213,7 +212,6 @@
             
                 <div id="rodape" class="mt-5 p-3 text-center container-fluid">            
                     <p><img class="m-2" src="{% static 'img/logo (2).png'%}" width="50">	© Acesso - Lagoa de Velhos</p>
-                    <a href="{% url 'login'%}"><i class="bi bi-person-fill text-white m-1"></i></a>
                     <a href="https://www.instagram.com/acesso.lv/"><i class="bi bi-instagram text-white m-1"></i></a>
                     <a href="https://youtu.be/Z1FhHzpkoP0"><i class="bi bi-youtube text-white m-1"></i></a>
                     </div>

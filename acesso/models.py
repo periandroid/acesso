@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class TransporteEscolar(models.Model):
+    nome = models.TextField(max_length=50, default="")
     escola = models.TextField(max_length=50, default="")
     endereco = models.TextField(max_length=50)
     destino = models.TextField(max_length=50)
