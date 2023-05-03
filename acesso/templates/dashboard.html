@@ -142,7 +142,7 @@
                             
                             {% for musica in musica_list %}
 
-                            {% if user.username == transporte.nome %}
+                            {% if user.username == musica.nome %}
                             <tr>
                                 <td>{{ musica.musica }}</td>
                                 <td>{{ musica.banda }}</td>
