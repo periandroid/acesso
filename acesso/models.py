@@ -17,3 +17,10 @@ class Perfil(models.Model):
     rua = models.TextField(max_length=25, null=True)
     bairro = models.TextField(max_length=20, null=True)
     complemento = models.TextField(max_length=25, null=True)
+
+class Musica(models.Model):
+    nome = models.TextField(max_length=50, default="")
+    email = models.TextField(max_length=50, default="")
+    musica = models.TextField(max_length=50, default="")
+    banda = models.TextField(max_length=50, default="")
+    status = models.TextField(max_length=10, default="")

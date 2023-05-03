@@ -3,7 +3,7 @@ from .models import Perfil
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
-from .models import TransporteEscolar
+from .models import TransporteEscolar, Musica
 
 def index (request):
     return render (request, 'index.html');
@@ -12,7 +12,8 @@ def administrador (request):
     if request.user.is_staff:
         transporte_escolar_list = TransporteEscolar.objects.all()
         usuario_list = Perfil.objects.all()
-        return render (request,'administrador.html', {'transporte_escolar_list': transporte_escolar_list, 'usuario_list': usuario_list},);
+        musica_list = Musica.objects.all()
+        return render (request,'dashboard.html', {'transporte_escolar_list': transporte_escolar_list, 'musica_list': musica_list, 'usuario_list': usuario_list},);
     else:
         return render('index')
     
@@ -20,7 +21,8 @@ def dashboard(request):
     if request.user.is_authenticated:
         transporte_escolar_list = TransporteEscolar.objects.all()
         usuario_list = Perfil.objects.all()
-        return render (request,'dashboard.html', {'transporte_escolar_list': transporte_escolar_list, 'usuario_list': usuario_list},);
+        musica_list = Musica.objects.all()
+        return render (request,'dashboard.html', {'transporte_escolar_list': transporte_escolar_list, 'musica_list': musica_list, 'usuario_list': usuario_list},);
         return redirect('index')
 
 def deferir (request):
@@ -189,3 +191,36 @@ def logout(request):
     auth.logout(request)
     return redirect('index')
 
+def showtalento(request):
+    if request.user.is_authenticated:
+        if request.POST:
+            nome = request.POST['nome']
+            email = request.POST['email']
+            musica = request.POST['musica']
+            banda = request.POST['banda']
+            status = request.POST['status']   
+            #Validações    
+            if not nome.strip(): 
+                messages.error(request, "Nome não informado, informe o seu nome")
+                return redirect('showtalento')
+            if not email.strip(): 
+                messages.error(request, "Email não informado, informe o seu email")
+                return redirect('showtalento')
+            if not musica.strip(): 
+                messages.error(request, "Musica não informada, informe a musica")
+                return redirect('showtalento')
+            if not banda.strip(): 
+                messages.error(request, "Banda não informada, informe a banda")
+                return redirect('showtalento')
+            if Musica.objects.filter(email=email).exists():
+                musica = Musica.objects.get(email=email)
+                musica.delete()
+                return redirect('showtalento')
+            musica = Musica(nome = nome, email = email, musica = musica, banda = banda, status = status)
+            musica.save()
+            messages.success(request,'Sua solicitação foi enviada com sucesso!')
+            return redirect('dashboard')
+        else:
+            return render (request, 'talento.html');
+    else:
+        return render('login')

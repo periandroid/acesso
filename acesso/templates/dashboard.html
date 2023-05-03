@@ -123,14 +123,54 @@
                                         </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </main>
+                        </div>             
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Inscrições no show de talentos
         </div>
+            <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Musica</th>
+                                <th>Autor(a)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if musica_list %}
+                            
+                            {% for musica in musica_list %}
 
+                            {% if user.username == transporte.nome %}
+                            <tr>
+                                <td>{{ musica.musica }}</td>
+                                <td>{{ musica.banda }}</td>
+                                <td>{{ musica.status }}</td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <th>Musica</th>
+                                    <th>Autor(a)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </tfoot>
+                            {% else %}
+                                        
+                            {% endif %}
 
+                            {% endfor %}
+                
+                            {% else %}
+                                <p class="m-2 text-dark opacity-50">Você não está inscrito.</p>
+                            {% endif %}
+                            </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="container p-5 my-5 border">
             <h1>Serviços disponíveis</h1>  
         </div>
@@ -153,7 +193,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="col mb-5">
+                    <div class="card bg-light">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="{% static 'img/talento.jpg'%}" />
+                        <!-- Product details-->
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 class="fw-bolder text-center">Show de Talentos</h5>
+                                Sec. Educação
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="{% url 'showtalento' %}">Inscrição</a></div>
+                        </div>
+                    </div>
+                </div>
               </div>
             </div>
+        </div>
+        </main>
+    </div>
 </div>
 {% endblock %}

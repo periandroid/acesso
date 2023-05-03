@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="m-5">
+  <h2><b>Educação</b></h2>
+  <h4 class="mb-3">Show de talentos (inscrição)</h4>  
+    <form action="{% url 'showtalento' %}" method='POST'> 
+      {% csrf_token %}  
+      <div class="row">
+        <div class="mt-2 mb-2 col-md-6">
+            <label for="musica">Musica</label>
+            <input id="musica" class="form-control" placeholder="Informe a música que você vai cantar" required name="musica"/>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div> <br>
+        </div>
+        <div class="mt-2 mb-2 col-md-6">
+            <label for="banda">Banda</label>
+            <input id="banda" class="form-control" placeholder="Informe de quem é a música (banda ou cantor)" required name="banda"/> <br>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Preencha o campo</div>
+       </div>
+       <div class="mt-2 mb-2 col-dm-12">
+            <input id="nome" class="hide" name="nome" value="{{user.username}}">
+            <input id="email" class="hide" name="email" value="{{user.email}}">
+            <input id="status" class="hide" name="status" value="Análise"/>
+            <button class="btn btn-primary btn-xl text-uppercase" type="submit" id="enviar">Confirmar</button><a class="m-5 text-right" href="{% url 'dashboard'%}">Voltar</a>
+        </div>
+    </form>
+</div>
+<script src="../js/lista.js"></script>
+<script>
+$(document).ready(function(){
+$(".hide").hide();
+});
+</script>
+<script>
+
+export default {
+data() {
+return {
+selected: null,
+options: [
+  { value: null, text: 'Please select an option' },
+  { value: 'a', text: 'This is First option' },
+  { value: 'b', text: 'Selected Option', disabled: true },
+  {
+    label: 'Grouped options',
+    options: [
+      { value: { C: '3PO' }, text: 'Option with object value' },
+      { value: { R: '2D2' }, text: 'Another option with object value' }
+    ]
+  }
+]
+}
+}
+}
+
+</script>
+{% endblock conteudo %}

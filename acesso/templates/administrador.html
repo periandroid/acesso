@@ -114,5 +114,52 @@
         </div>
     </div>
 
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Inscrições no show de talentos
+    </div>
+        <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Musica</th>
+                            <th>Autor(a)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if musica_list %}
+                        
+                        {% for musica in musica_list %}
+                        <tr>
+                            <td>{{ musica.nome }}</td>
+                            <td>{{ musica.email }}</td>
+                            <td>{{ musica.musica }}</td>
+                            <td>{{ musica.banda }}</td>
+                            <td>{{ musica.status }}</td>
+                        </tr>
+                            {% endfor %}
+    
+                            {% else %}
+                                <p>No polls are available.</p>
+                            {% endif %}
+                        </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Musica</th>
+                            <th>Autor(a)</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 {% endblock conteudo %}

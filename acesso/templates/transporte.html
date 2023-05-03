@@ -4,7 +4,7 @@
 <div class="m-5">
   <h2><b>Educação</b></h2>
   <h4 class="mb-3">Transporte escolar</h4>  
-    <form aaction="{% url 'solicita_transporte' %}" method='POST'> 
+    <form action="{% url 'solicita_transporte' %}" method='POST'> 
       {% csrf_token %}  
         <div class="row">
           <div class="col-sm-6">
